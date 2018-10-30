@@ -2,6 +2,7 @@ package robot
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 
@@ -37,7 +38,6 @@ func init() {
 	maneuvers["RIGHT"] = make(map[string]string)
 	maneuvers["RIGHT"]["LEFT"] = "UP"
 	maneuvers["RIGHT"]["RIGHT"] = "DOWN"
-	fmt.Println(maneuvers)
 }
 
 func NewRobot(name string) Robot {
@@ -130,7 +130,8 @@ func (robot *Robot) TakeAction() {
 		robot.Orientation = maneuvers[robot.Orientation][robot.Command[0]]
 		return
 	} else if robot.Command[0] == "EXIT" {
-
+		os.Exit(1)
+		return
 	}
 }
 
