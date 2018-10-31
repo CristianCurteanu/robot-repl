@@ -122,7 +122,7 @@ func (robot *Robot) TakeAction() {
 			robot.X--
 		} else if robot.Orientation == "RIGHT" && robot.Y < robot.Map.Width {
 			robot.Y++
-		} else if robot.Orientation == "LEFT" && robot.Y < 0 {
+		} else if robot.Orientation == "LEFT" && robot.Y > 0 {
 			robot.Y--
 		}
 		return

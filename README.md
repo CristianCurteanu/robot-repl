@@ -4,10 +4,12 @@ This is a project written in Golang from scratch for a toy robot. It is an inter
 
 # Installation
 
-You can download this repository, and if you have the Golang compiler installed just run:
+You can download this repository (by clonning or get the .zip), and if you have the Golang compiler installed just run:
 ```bash
-$ go run main.go
+$ make run
 ```
+
+You can also use `$ make run-osx` to specify the compiler that you want to build the interpreter on Mac OSX or `$ make run-linux` if you are on a Linux machine.
 
 This will launch the interactive shell.
 
