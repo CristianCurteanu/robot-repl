@@ -91,7 +91,7 @@ func (robot *Robot) ValidateCommand() error {
 			return &ValidationError{"Wrong coordinates introduced!"}
 		}
 
-		if !validateOrientation(robot.Command[3]) {
+		if !validateOrientation(&robot.Command[3]) {
 			return &ValidationError{"Wrong orientation introduced!"}
 		}
 
@@ -99,7 +99,7 @@ func (robot *Robot) ValidateCommand() error {
 		robot.Y = y
 		robot.Orientation = robot.Command[3]
 		return nil
-	} else if !validCommand(robot.Command[0]) {
+	} else if !validCommand(&robot.Command[0]) {
 		return &ValidationError{"Unknown command: " + robot.Command[0]}
 	}
 	return nil
@@ -143,18 +143,18 @@ func (robot Robot) PrintPosition() string {
 	return fmt.Sprintf("X: %d, Y: %d, Orientation: %s", robot.X, robot.Y, robot.Orientation)
 }
 
-func validCommand(command string) bool {
+func validCommand(command *string) bool {
 	for _, e := range []string{"MOVE", "LEFT", "RIGHT", "REPORT", "EXIT", ""} {
-		if command == e {
+		if *command == e {
 			return true
 		}
 	}
 	return false
 }
 
-func validateOrientation(target string) bool {
+func validateOrientation(target *string) bool {
 	for _, e := range validOrientations {
-		if e == target {
+		if e == *target {
 			return true
 		}
 	}
